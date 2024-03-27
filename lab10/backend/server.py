@@ -33,6 +33,10 @@ def add_product () :
         json.dump({"products": products } , f )
     return jsonify( new_product ) , 201
 
+@app . route ( '/product-images/<path:filename>')
+def get_image ( filename ) :
+    return send_from_directory('product-images',filename)
+
 @app.route('/products/update/<int:id>', methods=['PUT'])
 def update_product(id):
     updated_product = request.json
